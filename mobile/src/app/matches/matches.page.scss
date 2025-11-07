@@ -1,0 +1,39 @@
+.match-item {
+  margin: 10px 0;
+  border-radius: 8px;
+  --background: var(--ion-color-light);
+}
+
+.loading-container, .no-matches {
+  text-align: center;
+  padding: 40px 20px;
+  
+  ion-spinner {
+    margin-bottom: 16px;
+  }
+  
+  p {
+    color: var(--ion-color-medium);
+    margin: 0;
+  }
+}
+
+.no-matches {
+  ion-icon {
+    margin-bottom: 16px;
+  }
+  
+  h3 {
+    color: var(--ion-color-success);
+    margin-bottom: 8px;
+  }
+}
+
+.scheduled {
+  color: var(--ion-color-warning);
+  font-style: italic;
+}
+
+ion-button {
+  --border-radius: 20px;
+}

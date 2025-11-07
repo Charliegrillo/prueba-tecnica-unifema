@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Report Result</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Report Result</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Estado de carga -->
+  <div *ngIf="isLoading" class="loading-container">
+    <ion-spinner></ion-spinner>
+    <p>Loading pending matches...</p>
+  </div>
+  <!-- Lista de partidos pendientes -->
+  <ion-list *ngIf="!isLoading && scheduledMatches.length > 0">
+    <ion-item *ngFor="let match of scheduledMatches" class="match-item">
+      <ion-label>
+        <h2>{{ match.home_team.name }} vs {{ match.away_team.name }}</h2>
+        <p>{{ match.match_date | date:'mediumDate' }}</p>
+        <p class="scheduled">Awaiting results</p>
+      </ion-label>
+      <ion-button 
+        slot="end" 
+        color="primary" 
+        (click)="reportMatchResult(match)">
+        <ion-icon name="create-outline" slot="start"></ion-icon>
+        Report
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Mensaje cuando no hay partidos pendientes -->
+  <div *ngIf="scheduledMatches.length === 0 && !isLoading" class="no-matches">
+    <ion-icon name="checkmark-circle-outline" size="large" color="success"></ion-icon>
+    <h3>There are no pending matches.</h3>
+    <p>All results have been reported.</p>
+  </div>
+
+  <!-- Refresher -->
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Tira para actualizar"
+      refreshingSpinner="circles"
+      refreshingText="Updating...">
+    </ion-refresher-content>
+  </ion-refresher>
+</ion-content>

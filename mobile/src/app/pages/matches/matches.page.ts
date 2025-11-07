@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @Component({
   standalone: true, 
@@ -14,7 +15,8 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     IonicModule,
     RouterModule
-  ]
+  ],
+   schemas: [CUSTOM_ELEMENTS_SCHEMA] 
 })
 export class MatchesPage implements OnInit {
 
