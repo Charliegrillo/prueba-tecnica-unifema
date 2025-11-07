@@ -13,6 +13,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/",
+            "deployUrl": "/",
             "outputPath": "www",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -71,20 +73,22 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "app:build:production"
-            },
-            "development": {
-              "buildTarget": "app:build:development"
-            },
-            "ci": {
-              "progress": false
-            }
+        "builder": "@angular-devkit/build-angular:dev-server",
+        "configurations": {
+          "production": {
+            "buildTarget": "app:build:production"
           },
-          "defaultConfiguration": "development"
+          "development": {
+            "buildTarget": "app:build:development"
+          }
         },
+        "options": {
+          "host": "localhost",
+          "port": 4200,
+          "proxyConfig": "proxy.conf.json"
+        },
+        "defaultConfiguration": "development"
+      },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {

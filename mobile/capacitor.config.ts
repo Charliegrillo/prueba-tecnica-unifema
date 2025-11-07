@@ -1,9 +1,22 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.miniliga.app',
-  appName: 'mobile',
-  webDir: 'www'
+  appId: 'com.tuapp.unifema',
+  appName: 'Tu App',
+  webDir: 'www',
+ server: {
+    androidScheme: 'https',
+    cleartext: true,
+    allowNavigation: [
+      'unifema.server-testing.website',
+      '*.server-testing.website'
+    ]
+  },
+  plugins: {
+    CapacitorHttp: {
+      enabled: false
+    }
+  }
 };
 
 export default config;
